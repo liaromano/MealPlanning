@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Be Vietnam Pro", sans-serif;
+  --font-label: "Be Vietnam Pro", sans-serif;
+
+  --color-on-tertiary: #d9ffab;
+  --color-on-tertiary-fixed: #2c4d00;
+  --color-secondary-dim: #764400;
+  --color-error-container: #f95630;
+  --color-on-secondary-fixed-variant: #774400;
+  --color-primary-fixed: #91f78e;
+  --color-secondary: #874e00;
+  --color-on-secondary: #fff0e5;
+  --color-on-surface: #2c2f2e;
+  --color-on-primary-fixed-variant: #00691a;
+  --color-outline-variant: #abaeac;
+  --color-on-error-container: #520c00;
+  --color-on-tertiary-fixed-variant: #406c00;
+  --color-surface-container-low: #eff1ef;
+  --color-surface-tint: #006b1b;
+  --color-on-secondary-fixed: #4f2c00;
+  --color-surface: #f5f7f5;
+  --color-inverse-on-surface: #9b9d9c;
+  --color-background: #f5f7f5;
+  --color-on-background: #2c2f2e;
+  --color-error: #b02500;
+  --color-tertiary: #3c6600;
+  --color-surface-container: #e6e9e7;
+  --color-tertiary-container: #c1fd7c;
+  --color-tertiary-fixed-dim: #b3ee6f;
+  --color-on-primary: #d1ffc8;
+  --color-surface-container-high: #e0e3e1;
+  --color-on-tertiary-container: #396100;
+  --color-on-surface-variant: #595c5b;
+  --color-surface-variant: #d9dedb;
+  --color-on-primary-fixed: #00480f;
+  --color-tertiary-dim: #345900;
+  --color-inverse-surface: #0b0f0e;
+  --color-outline: #747776;
+  --color-error-dim: #b92902;
+  --color-surface-container-highest: #d9dedb;
+  --color-surface-bright: #f5f7f5;
+  --color-secondary-container: #ffc791;
+  --color-inverse-primary: #91f78e;
+  --color-secondary-fixed-dim: #ffb467;
+  --color-primary-fixed-dim: #83e881;
+  --color-secondary-fixed: #ffc791;
+  --color-on-error: #ffefec;
+  --color-on-secondary-container: #6a3c00;
+  --color-primary-dim: #005d16;
+  --color-on-primary-container: #005e17;
+  --color-primary-container: #91f78e;
+  --color-tertiary-fixed: #c1fd7c;
+  --color-primary: #006b1b;
+  --color-surface-container-lowest: #ffffff;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-on-background font-body;
+  }
+}
+
+.editorial-shadow {
+  box-shadow: 0 4px 24px rgba(44, 47, 46, 0.06);
+}
