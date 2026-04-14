@@ -182,7 +182,6 @@ export default function App() {
                           meal={meal} 
                           onRemove={removeMeal} 
                           onToggleComplete={toggleComplete}
-                          onEdit={startEdit}
                           onViewDetails={(m) => {
                             setSelectedMeal(m);
                             setActiveTab('details');

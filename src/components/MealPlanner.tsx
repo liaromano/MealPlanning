@@ -80,7 +80,7 @@ const mealTypeConfig = {
   SNACK: { color: 'bg-pink-50 text-pink-800', label: 'Snack' },
 };
 
-export function MealCard({ meal, onRemove, onToggleComplete, onEdit, onViewDetails }: { meal: Meal; onRemove?: (id: string) => void; onToggleComplete?: (id: string) => void; onEdit?: (meal: Meal) => void; onViewDetails?: (meal: Meal) => void }) {
+export function MealCard({ meal, onRemove, onToggleComplete, onViewDetails }: { meal: Meal; onRemove?: (id: string) => void; onToggleComplete?: (id: string) => void; onEdit?: (meal: Meal) => void; onViewDetails?: (meal: Meal) => void }) {
   const config = mealTypeConfig[meal.type as keyof typeof mealTypeConfig] || mealTypeConfig.SNACK;
 
   return (
@@ -89,24 +89,14 @@ export function MealCard({ meal, onRemove, onToggleComplete, onEdit, onViewDetai
       whileHover={{ scale: 1.01 }}
       className={`group bg-surface-container-lowest rounded-[28px] editorial-shadow overflow-hidden flex flex-col relative transition-all h-[260px] w-full ${meal.completed ? 'opacity-60 grayscale-[0.5]' : ''}`}
     >
-      <div className="absolute top-4 right-4 z-20 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-        {onEdit && (
-          <button 
-            onClick={(e) => { e.stopPropagation(); onEdit(meal); }}
-            className="p-2 bg-white/90 backdrop-blur-sm rounded-full shadow-sm hover:bg-primary/10 transition-colors"
-          >
-            <Edit3 className="w-4 h-4 text-primary" />
-          </button>
-        )}
-        {onRemove && (
-          <button 
-            onClick={(e) => { e.stopPropagation(); onRemove(meal.id); }}
-            className="p-2 bg-white/90 backdrop-blur-sm rounded-full shadow-sm hover:bg-error/10 transition-colors"
-          >
-            <X className="w-4 h-4 text-error" />
-          </button>
-        )}
-      </div>
+      {onRemove && (
+        <button 
+          onClick={(e) => { e.stopPropagation(); onRemove(meal.id); }}
+          className="absolute top-4 right-4 z-20 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-sm hover:bg-error/10 transition-colors text-error"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      )}
 
       <div className={`h-24 min-h-[96px] w-full ${config.color} flex items-center justify-center relative flex-shrink-0`}>
         <div className="bg-white/40 w-12 h-12 rounded-2xl backdrop-blur-sm flex items-center justify-center text-2xl">
@@ -450,15 +440,17 @@ export function MealDetailsView({ meal, onBack }: { meal: Meal; onBack: () => vo
       </div>
 
       <div className="bg-surface-container-lowest rounded-[40px] overflow-hidden editorial-shadow">
-        <div className={`h-48 w-full ${config.color} flex items-center justify-center relative`}>
-          <div className="bg-white/40 w-24 h-24 rounded-[32px] backdrop-blur-sm flex items-center justify-center text-5xl">
+        <div className={`min-h-[16rem] md:h-48 w-full ${config.color} flex flex-col md:block items-center justify-center p-8 md:p-0 relative`}>
+          <div className="bg-white/40 w-20 h-20 md:w-24 md:h-24 rounded-[32px] backdrop-blur-sm flex items-center justify-center text-4xl md:text-5xl md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 mb-6 md:mb-0">
             🍴
           </div>
-          <div className="absolute bottom-6 left-8">
+          <div className="md:absolute md:bottom-6 md:left-8 text-center md:text-left">
             <span className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-label font-bold uppercase tracking-wider text-on-surface mb-2 inline-block">
               {config.label}
             </span>
-            <h3 className="text-4xl font-headline font-extrabold text-on-surface">{meal.title}</h3>
+            <h3 className="text-2xl md:text-4xl font-headline font-extrabold text-on-surface line-clamp-2">
+              {meal.title}
+            </h3>
           </div>
         </div>
 
